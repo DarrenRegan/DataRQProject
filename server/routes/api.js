@@ -83,6 +83,18 @@ router.put('/video/:id', function(req, res){
     );
 });
 
+//delete request using mongoose findByIdAndRemove
+router.delete('/video/:id', function(req, res){
+    console.log('Deleting a Video');
+    Video.findByIdAndRemove(req.params.id, function(err, deletedVideo){
+        if(err){
+            res.send('Error Deleting Video')
+        }else{
+            res.json(deletedVideo);
+        }
+    });
+});
+
 
 
 
