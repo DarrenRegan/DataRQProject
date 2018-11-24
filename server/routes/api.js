@@ -28,4 +28,20 @@ router.get('/videos', function(req, res){
     })
 });
 
+
+//Get request for a video with an ID
+router.get('/videos/:id', function(req, res){
+    //res.send('api works!');
+    console.log('Get Request for a Video with ID');
+    Video.findById(req.params.id)//requests id from web browser
+    .exec(function(err, video){
+        if (err){
+            console.log("Error getting videos");
+        }else{
+            res.json(video); //Returns JSON DATA TO http://localhost:3000/api/videos
+        }
+    })
+});
+
+
 module.exports = router;
