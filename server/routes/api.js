@@ -15,7 +15,7 @@ mongoose.connect(mongoDB, function(err){
 //Get request to http://localhost:3000/api/videos
 //Mongoose find to find videos
 //Execute method to either Error or list of Videos
-router.get('/videos:id', function(req, res){
+router.get('/videos', function(req, res){
     //res.send('api works!');
     console.log('Get Request for all Videos! ');
     Video.find({})
@@ -23,7 +23,7 @@ router.get('/videos:id', function(req, res){
         if (err){
             console.log("Error getting videos");
         }else{
-            res.json(videos);
+            res.json(videos); //Returns JSON DATA TO http://localhost:3000/api/videos
         }
     })
 });
