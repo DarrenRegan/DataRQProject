@@ -43,5 +43,26 @@ router.get('/videos/:id', function(req, res){
     })
 });
 
+//Post request to http://localhost:3000/api/video
+//Follow Video Schema title, url, description
+//Create new object Video to save new information
+//Call mongoose safe method to save to database
+router.post('/video', function(req, res){
+    console.log('Post a Video');
+    var newVideo = new Video();
+    newVideo.title = req.body.title;
+    newVideo.url = req.body.url;
+    newVideo.description = req.body.description;
+    newVideo.save(function(err, insertedVideo){
+        if (err){
+            console.log('Error saving Video');
+        }else{
+            res.json(insertedVideo);
+        }
+    });
+});
+
+
+
 
 module.exports = router;
