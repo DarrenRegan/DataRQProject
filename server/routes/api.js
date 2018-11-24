@@ -62,6 +62,27 @@ router.post('/video', function(req, res){
     });
 });
 
+//Update Video by ID
+//FindByIDandUpdate updates after recieving request using 3 forms
+router.put('/video/:id', function(req, res){
+    console.log('Update a Video');
+    Video.findByIdAndUpdate(req.params.id,
+    {
+        $set: {title: req.body.title, url: req.body.url, description: req.body.description}
+    },
+    {
+        new:true //if true method below returns new video details, if false shows old details
+    },
+    function(err, updatedVideo){
+        if(err){
+            res.send("Error Updating Video");
+        }else{
+            res.json(updatedVideo);
+        }
+    }
+    );
+});
+
 
 
 
