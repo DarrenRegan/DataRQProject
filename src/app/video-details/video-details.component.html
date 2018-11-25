@@ -1,5 +1,9 @@
  <!--Added Two-Way Data Binding i used in ionic-->
 <div>
+  <div>
+    <iframe width="100%" height="700px" [src]="video.url.replace('watch','embed') | safe" > <!-- | safe will make it so angular will accept URLs -->
+    </iframe>
+  </div>
   <form>
     <div *ngIf="editTitle" class="form-group">
       <input type="input" class="form-control" name="title" required placeholder="title" [(ngModel)]="video.title">

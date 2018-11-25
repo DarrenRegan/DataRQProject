@@ -8,6 +8,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { VideoListComponent } from './video-list/video-list.component';
 import { VideoDetailsComponent } from './video-details/video-details.component';
 import { FormsModule } from '@angular/forms';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     PlaylistComponent,
     VideoListComponent,
-    VideoDetailsComponent
+    VideoDetailsComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
