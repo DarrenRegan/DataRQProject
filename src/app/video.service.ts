@@ -12,6 +12,8 @@ export class VideoService {
   private _getUrl = "http://localhost:3000/api/videos";
   private _postUrl = "http://localhost:3000/api/video";
   private _putUrl = "http://localhost:3000/api/video/";
+  private _deleteUrl = "http://localhost:3000/api/video/";
+
   constructor(private _http: Http) { }
 
   //get method passing /api/videos, fetch all videos for response
@@ -36,5 +38,10 @@ export class VideoService {
        .pipe(map((response: Response) => response.json()));
   }
 
+  //Delete Method for deleting a video
+  deleteVideo(video: Video){
+    return this._http.delete(this._deleteUrl + video._id)
+       .pipe(map((response: Response) => response.json()));
+  }
 
 }

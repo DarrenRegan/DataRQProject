@@ -21,7 +21,7 @@
       </div>
 
     <!-- *ngIf so that will only display if theres a video-->
-    <video-details *ngIf="selectedVideo && hideVideo" [video]="selectedVideo"></video-details>
+    <video-details (updateVideoEvent)="onUpdateVideoEvent($event)" (deleteVideoEvent)="onDeleteVideoEvent($event)" *ngIf="selectedVideo && hideVideo" [video]="selectedVideo"></video-details>
   </div>
   <div class="col-sm-3">
     <button (click)="newVideo()" style="margin-bottom:2px;" type="button" class="btn btn-success btn-block"> + Add Video </button>

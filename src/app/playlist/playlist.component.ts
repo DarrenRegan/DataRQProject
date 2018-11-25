@@ -42,8 +42,34 @@ export class PlaylistComponent implements OnInit {
       })
   }
 
+  //Calls update Video method of video.service.ts, gets back values of new video assigns to resUpdatedVideo
+  onUpdateVideoEvent(video: any){
+    this._videoService.updateVideo(video)
+      .subscribe(resUpdatedVideo => video = resUpdatedVideo);
+    this.selectedVideo = null;
+  }
+
   //Hides forms until you press button
   newVideo(){
     this.hideVideo = false;
   }
+
+  //ArraySize = list of videos, call deleteVideo method to delete video and send back a response of deleted video
+  //Subsricbe to that response, with array iterate all videos until you find right ID for video
+  onDeleteVideoEvent(video: any){
+    let videoArray = this.videos;
+    this._videoService.deleteVideo(video)
+      .subscribe(resDeletedVideo => {
+        for(let i=0; i < videoArray.length; i++)
+        {
+          if(videoArray[i]._id === video._id)
+          {
+            videoArray.splice(i,1); //3-5 Videos remove 1 from array and update ui and list
+          }
+        }
+      });
+      this.selectedVideo = null; //set null after delete, screen won't show old video details
+  };
+
+
 }
