@@ -4,10 +4,15 @@
 #Important Installs
 
 ng serve -o
+
 ng build
+
 npm install --save express body-parser
+
 npm install --save mongoose
+
 npm install bootstrap@3.3.7 --save
+
 npm install --save rxjs-compat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
