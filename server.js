@@ -7,7 +7,6 @@ var api = require('./server/routes/api');
 
 var app = express();
 var port = 3000
-//var host = server.address().address
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
