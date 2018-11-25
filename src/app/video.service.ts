@@ -11,6 +11,7 @@ export class VideoService {
 
   private _getUrl = "http://localhost:3000/api/videos";
   private _postUrl = "http://localhost:3000/api/video";
+  private _putUrl = "http://localhost:3000/api/video/";
   constructor(private _http: Http) { }
 
   //get method passing /api/videos, fetch all videos for response
@@ -27,6 +28,13 @@ export class VideoService {
        .pipe(map((response: Response) => response.json()));
   }
 
+  //Put Update method passing api/video/
+  updateVideo(video: Video){
+    let headers = new Headers({ 'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers});
+    return this._http.put(this._putUrl + video._id, JSON.stringify(video), options)
+       .pipe(map((response: Response) => response.json()));
+  }
 
 
 }

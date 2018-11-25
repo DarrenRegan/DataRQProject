@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-9">
     <!-- Form for added a NEW VIDEO-->
-      <div>
+      <div *ngIf="!hideVideo">
         <h2>New Video</h2>
         <form #form="ngForm" (ngSubmit)="onSubmitAddVideo(form.value)" class="well">
           <div class="form-group">
@@ -21,10 +21,10 @@
       </div>
 
     <!-- *ngIf so that will only display if theres a video-->
-    <video-details *ngIf="selectedVideo" [video]="selectedVideo"></video-details>
+    <video-details *ngIf="selectedVideo && hideVideo" [video]="selectedVideo"></video-details>
   </div>
   <div class="col-sm-3">
-    <button style="margin-bottom:2px;" type="button" class="btn btn-success btn-block"> + Add Video </button>
+    <button (click)="newVideo()" style="margin-bottom:2px;" type="button" class="btn btn-success btn-block"> + Add Video </button>
     <video-list (SelectVideo)="onSelectVideo($event)" [videos]="videos"></video-list>
   </div>
 </div> 
