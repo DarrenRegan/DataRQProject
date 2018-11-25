@@ -16,9 +16,16 @@ export class PlaylistComponent implements OnInit {
     {"_id": "4", "title": "Title 4", "url": "url 4", "description": "desc 4"}
   ];
 
+  selectedVideo: Video;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelectVideo(video:any){ //Take in video of type:any
+    this.selectedVideo = video;//Capture and assign to video
+    console.log(this.selectedVideo);
   }
 
 }
