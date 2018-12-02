@@ -16,9 +16,8 @@ mongoose.connect(mongoDB, function(err){
 //Mongoose find to find videos
 //Execute method to either Error or list of Videos
 router.get('/videos', function(req, res){
-    //res.send('api works!');
     console.log('User get Request for all avaiable videos! ');
-    Video.find({})
+    Video.find({}) //look up database
     .exec(function(err, videos){
         if (err){
             console.status(404).log("Error getting videos");
@@ -31,7 +30,6 @@ router.get('/videos', function(req, res){
 
 //Get request for a video with an ID
 router.get('/videos/:id', function(req, res){
-    //res.send('api works!');
     console.log('User Get Request for a Video with an ID');
     Video.findById(req.params.id)//requests id from web browser
     .exec(function(err, video){
@@ -68,6 +66,8 @@ router.put('/video/:id', function(req, res){
     console.log('User Updated a Video! ');
     Video.findByIdAndUpdate(req.params.id,
     {
+        //https://docs.mongodb.com/manual/reference/operator/update/set/
+        //New values replace old values.
         $set: {title: req.body.title, url: req.body.url, description: req.body.description}
     },
     {

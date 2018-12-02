@@ -12,8 +12,8 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 //Configuring express to use body-parser as middle-ware. 
 //https://www.npmjs.com/package/body-parser
-app.use(bodyParser.urlencoded({ extended: true })); 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); //Parse text to urlencoded data https://www.urlencoder.org/
+app.use(bodyParser.json()); //Parse text to json
 
 //"/api/", Removes assess control error
 app.use("/api/", function(req, res, next) {
@@ -24,9 +24,10 @@ app.use("/api/", function(req, res, next) {
     next();
     });
 
-app.use('/api', api);
+app.use('/api', api); //Should go to server/routes/api.js
 
 //Render index.html
+// for any path knows to listen to index.html
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });

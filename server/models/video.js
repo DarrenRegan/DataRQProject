@@ -9,5 +9,5 @@ var videoSchema = new Schema({
     description: String
 });
 
-//Collection on mLab is called videos
+//model = Schema title, url, desc  videos = mLab database Name, Collection on mLab is called videos
 module.exports = mongoose.model('video', videoSchema, 'videos')

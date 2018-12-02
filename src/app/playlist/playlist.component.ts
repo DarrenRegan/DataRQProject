@@ -12,6 +12,7 @@ export class PlaylistComponent implements OnInit {
 
  
   //Array for 4 Videos to display to videolist.component.ts & bootstrap styling
+  //Arary of videos which will be inputed by user passed to video-list and displayed
   videos: Array<Video>;
 
   selectedVideo: Video;
