@@ -15,6 +15,8 @@ npm install bootstrap@3.3.7 --save
 
 npm install --save rxjs-compat
 
+npm install --save @angular/material @angular/cdk @angular/animations
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
 ## Development server
