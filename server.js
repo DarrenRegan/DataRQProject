@@ -26,8 +26,6 @@ app.use("/api/", function(req, res, next) {
 
 app.use('/api', api);
 
-
-
 //Render index.html
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));

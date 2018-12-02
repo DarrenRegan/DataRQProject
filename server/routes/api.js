@@ -8,7 +8,7 @@ var mongoDB = "mongodb://darren:123darren123@ds115854.mlab.com:15854/dreganplayl
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, function(err){
     if(err){
-        console.error("Error " + err);
+        console.status(404).error("Error " + err);
     }
 });
 
@@ -17,13 +17,13 @@ mongoose.connect(mongoDB, function(err){
 //Execute method to either Error or list of Videos
 router.get('/videos', function(req, res){
     //res.send('api works!');
-    console.log('Get Request for all Videos! ');
+    console.log('User get Request for all avaiable videos! ');
     Video.find({})
     .exec(function(err, videos){
         if (err){
-            console.log("Error getting videos");
+            console.status(404).log("Error getting videos");
         }else{
-            res.json(videos); //Returns JSON DATA TO http://localhost:3000/api/videos
+            res.status(200).json(videos); //Returns JSON DATA TO http://localhost:3000/api/videos
         }
     })
 });
@@ -32,13 +32,13 @@ router.get('/videos', function(req, res){
 //Get request for a video with an ID
 router.get('/videos/:id', function(req, res){
     //res.send('api works!');
-    console.log('Get Request for a Video with ID');
+    console.log('User Get Request for a Video with an ID');
     Video.findById(req.params.id)//requests id from web browser
     .exec(function(err, video){
         if (err){
-            console.log("Error getting videos");
+            console.status(404).log("Error getting videos");
         }else{
-            res.json(video); //Returns JSON DATA TO http://localhost:3000/api/videos
+            res.status(200).json(video); //Returns JSON DATA TO http://localhost:3000/api/videos
         }
     })
 });
@@ -55,9 +55,9 @@ router.post('/video', function(req, res){
     newVideo.description = req.body.description;
     newVideo.save(function(err, insertedVideo){
         if (err){
-            console.log('Error saving Video');
+            console.status(404).log('Error saving Video');
         }else{
-            res.json(insertedVideo);
+            res.status(200).json(insertedVideo);
         }
     });
 });
@@ -65,7 +65,7 @@ router.post('/video', function(req, res){
 //Update Video by ID
 //FindByIDandUpdate updates after recieving request using 3 forms
 router.put('/video/:id', function(req, res){
-    console.log('Update a Video');
+    console.log('User Updated a Video! ');
     Video.findByIdAndUpdate(req.params.id,
     {
         $set: {title: req.body.title, url: req.body.url, description: req.body.description}
@@ -75,9 +75,9 @@ router.put('/video/:id', function(req, res){
     },
     function(err, updatedVideo){
         if(err){
-            res.send("Error Updating Video");
+            res.status(404).send("Error Updating Video");
         }else{
-            res.json(updatedVideo);
+            res.status(200).json(updatedVideo);
         }
     }
     );
@@ -88,9 +88,9 @@ router.delete('/video/:id', function(req, res){
     console.log('Deleting a Video');
     Video.findByIdAndRemove(req.params.id, function(err, deletedVideo){
         if(err){
-            res.send('Error Deleting Video')
+            res.status(404).send('Error Deleting Video')
         }else{
-            res.json(deletedVideo);
+            res.status(200).json(deletedVideo);
         }
     });
 });
