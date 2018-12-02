@@ -48,7 +48,7 @@ router.get('/videos/:id', function(req, res){
 //Create new object Video to save new information
 //Call mongoose safe method to save to database
 router.post('/video', function(req, res){
-    console.log('Post a Video');
+    console.log('Posting a Video');
     var newVideo = new Video();
     newVideo.title = req.body.title;
     newVideo.url = req.body.url;
